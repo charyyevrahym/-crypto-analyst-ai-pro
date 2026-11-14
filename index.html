@@ -4,122 +4,153 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crypto Analyst AI Pro</title>
-
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+ margin:0;padding:20px 16px 35px;
+ background:radial-gradient(circle at top,#142b55,#070d1b 55%);
+ color:#fff;font-family:Arial,sans-serif;
 }
-
-body {
-    margin: 0;
-    padding: 20px;
-    background: #0b1120;
-    color: white;
-    font-family: Arial, sans-serif;
+header{text-align:center;margin:15px 0 25px}
+.logo{font-size:38px}
+h1{font-size:25px;margin:8px 0}
+.sub{color:#91a8ce;font-size:13px}
+.status{color:#20e6a0;font-size:12px;margin-top:10px}
+.market{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:8px;margin-bottom:25px
 }
-
-h1 {
-    font-size: 25px;
-    margin-bottom: 5px;
+.coin{
+ background:#111e36;border:1px solid #29436b;
+ border-radius:15px;padding:14px 8px;text-align:center
 }
-
-.subtitle {
-    color: #94a3b8;
-    margin-bottom: 25px;
+.coin b{font-size:15px}
+.coin p{font-size:12px;color:#a8bad7;margin:9px 0 5px}
+.coin small{color:#20e6a0}
+h2{font-size:17px;margin:25px 0 13px}
+.menu{
+ display:grid;grid-template-columns:1fr 1fr;gap:13px
 }
-
-.menu {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+.card{
+ min-height:145px;padding:18px 13px;
+ border-radius:18px;border:1px solid #31518a;
+ background:linear-gradient(145deg,#192e58,#10182c);
+ cursor:pointer;transition:.2s
 }
-
-.card {
-    background: #172238;
-    border: 1px solid #263650;
-    border-radius: 16px;
-    padding: 22px 12px;
-    text-align: center;
-    cursor: pointer;
+.card:active{transform:scale(.97)}
+.card .ico{font-size:32px}
+.card h3{font-size:15px;margin:13px 0 7px}
+.card p{font-size:11px;color:#a8bad7;margin:0}
+#content{
+ display:none;margin-top:22px;padding:19px;
+ border:1px solid #31518a;border-radius:18px;
+ background:#101c32;line-height:1.6
 }
-
-.card:active {
-    background: #243653;
+#content h2{margin-top:0;color:#72b7ff}
+.item{
+ background:#182945;border-radius:12px;
+ padding:12px;margin:10px 0;color:#d8e5ff
 }
-
-.icon {
-    font-size: 32px;
-    margin-bottom: 12px;
+.back{
+ background:#2465c7;border:0;border-radius:10px;
+ padding:10px 18px;color:white;font-size:14px;
+ margin-top:12px
 }
-
-.card h3 {
-    font-size: 14px;
-    margin: 0;
-}
-
-#content {
-    margin-top: 25px;
-    padding: 18px;
-    background: #172238;
-    border-radius: 16px;
-    color: #cbd5e1;
-    display: none;
-}
+.note{font-size:11px;color:#8196b9;text-align:center;margin-top:25px}
 </style>
 </head>
 
 <body>
+<header>
+ <div class="logo">🚀</div>
+ <h1>Crypto Analyst AI Pro</h1>
+ <div class="sub">Smart Market Learning Platform</div>
+ <div class="status">● SYSTEM ONLINE</div>
+</header>
 
-<h1>🚀 Crypto Analyst AI Pro</h1>
-<div class="subtitle">Professional Market Analysis</div>
+<h2>📊 Market Overview</h2>
+<div class="market">
+ <div class="coin"><b>₿ BTC</b><p>Bitcoin</p><small>Market data</small></div>
+ <div class="coin"><b>◆ ETH</b><p>Ethereum</p><small>Market data</small></div>
+ <div class="coin"><b>◎ SOL</b><p>Solana</p><small>Market data</small></div>
+</div>
 
+<h2>⚡ Main Dashboard</h2>
 <div class="menu">
-
-<div class="card" onclick="openPage('scanner')">
-<div class="icon">📊</div>
-<h3>Market Scanner</h3>
-</div>
-
-<div class="card" onclick="openPage('analysis')">
-<div class="icon">🧠</div>
-<h3>AI Analysis</h3>
-</div>
-
-<div class="card" onclick="openPage('timeframe')">
-<div class="icon">⏱️</div>
-<h3>Multi-Timeframe</h3>
-</div>
-
-<div class="card" onclick="openPage('settings')">
-<div class="icon">⚙️</div>
-<h3>Settings</h3>
-</div>
-
+ <div class="card" onclick="openPage('scanner')">
+  <div class="ico">📊</div>
+  <h3>Market Scanner</h3>
+  <p>Market information</p>
+ </div>
+ <div class="card" onclick="openPage('analysis')">
+  <div class="ico">🧠</div>
+  <h3>AI Analysis</h3>
+  <p>Learn market structure</p>
+ </div>
+ <div class="card" onclick="openPage('timeframe')">
+  <div class="ico">⏱️</div>
+  <h3>Multi-Timeframe</h3>
+  <p>Compare chart periods</p>
+ </div>
+ <div class="card" onclick="openPage('settings')">
+  <div class="ico">⚙️</div>
+  <h3>Settings</h3>
+  <p>App preferences</p>
+ </div>
 </div>
 
 <div id="content"></div>
 
+<div class="note">
+ Crypto Analyst AI Pro · Educational information only
+</div>
+
 <script>
-const tg = window.Telegram.WebApp;
+const tg=window.Telegram.WebApp;
 tg.ready();
 tg.expand();
 
-function openPage(page) {
-    const content = document.getElementById("content");
+const pages={
+ scanner:`
+ <h2>📊 Market Scanner</h2>
+ <div class="item">₿ Bitcoin (BTC) — Market information</div>
+ <div class="item">◆ Ethereum (ETH) — Market information</div>
+ <div class="item">◎ Solana (SOL) — Market information</div>
+ <p>Market data connection will be added in the next development step.</p>`,
+ analysis:`
+ <h2>🧠 AI Analysis</h2>
+ <div class="item">📈 Trend — Learn higher highs and higher lows.</div>
+ <div class="item">📍 Support & Resistance — Understand important price areas.</div>
+ <div class="item">🕯️ Candlesticks — Learn candle patterns.</div>
+ <div class="item">📚 Scalping — Educational explanation of short chart periods.</div>`,
+ timeframe:`
+ <h2>⏱️ Multi-Timeframe</h2>
+ <div class="item">M5 — 5-minute chart</div>
+ <div class="item">M15 — 15-minute chart</div>
+ <div class="item">H1 — 1-hour chart</div>
+ <div class="item">H4 — 4-hour chart</div>
+ <p>Compare how market structure appears across different periods.</p>`,
+ settings:`
+ <h2>⚙️ Settings</h2>
+ <div class="item">🌙 Theme: Dark mode</div>
+ <div class="item">🌐 Language: English</div>
+ <div class="item">🔔 Notifications: Coming soon</div>
+ <div class="item">ℹ️ Version: 1.0</div>`
+};
 
-    const pages = {
-        scanner: "📊 Market Scanner — Market data section",
-        analysis: "🧠 AI Analysis — Trend and Scalping education",
-        timeframe: "⏱️ Multi-Timeframe — Timeframe comparison",
-        settings: "⚙️ Settings — Application settings"
-    };
-
-    content.style.display = "block";
-    content.innerHTML = pages[page];
+function openPage(page){
+ const box=document.getElementById("content");
+ box.innerHTML=pages[page]+
+ '<button class="back" onclick="goHome()">← Back to Home</button>';
+ box.style.display="block";
+ box.scrollIntoView({behavior:"smooth"});
+}
+function goHome(){
+ document.getElementById("content").style.display="none";
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 </script>
-
 </body>
 </html>
