@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crypto Analyst AI Pro</title>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #0b1120;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #94a3b8;
+    margin-bottom: 25px;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.card {
+    background: #172238;
+    border: 1px solid #263650;
+    border-radius: 16px;
+    padding: 22px 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card:active {
+    background: #243653;
+}
+
+.icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    font-size: 14px;
+    margin: 0;
+}
+
+#content {
+    margin-top: 25px;
+    padding: 18px;
+    background: #172238;
+    border-radius: 16px;
+    color: #cbd5e1;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🚀 Crypto Analyst AI Pro</h1>
+<div class="subtitle">Professional Market Analysis</div>
+
+<div class="menu">
+
+<div class="card" onclick="openPage('scanner')">
+<div class="icon">📊</div>
+<h3>Market Scanner</h3>
+</div>
+
+<div class="card" onclick="openPage('analysis')">
+<div class="icon">🧠</div>
+<h3>AI Analysis</h3>
+</div>
+
+<div class="card" onclick="openPage('timeframe')">
+<div class="icon">⏱️</div>
+<h3>Multi-Timeframe</h3>
+</div>
+
+<div class="card" onclick="openPage('settings')">
+<div class="icon">⚙️</div>
+<h3>Settings</h3>
+</div>
+
+</div>
+
+<div id="content"></div>
+
+<script>
+const tg = window.Telegram.WebApp;
+tg.ready();
+tg.expand();
+
+function openPage(page) {
+    const content = document.getElementById("content");
+
+    const pages = {
+        scanner: "📊 Market Scanner — Market data section",
+        analysis: "🧠 AI Analysis — Trend and Scalping education",
+        timeframe: "⏱️ Multi-Timeframe — Timeframe comparison",
+        settings: "⚙️ Settings — Application settings"
+    };
+
+    content.style.display = "block";
+    content.innerHTML = pages[page];
+}
+</script>
+
+</body>
+</html>
