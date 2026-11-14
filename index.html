@@ -153,14 +153,19 @@ function goHome(){
 }
 </script>
 <section id="tradingview" style="padding:15px;color:white">
-<h2>📊 TradingView Chart</h2>
+<h2>📊 TradingView Market Chart</h2>
+<div style="display:flex;gap:8px;margin:12px 0;flex-wrap:wrap">
+<button onclick="loadChart('BINANCE:BTCUSDT')">BTC</button>
+<button onclick="loadChart('BINANCE:ETHUSDT')">ETH</button>
+<button onclick="loadChart('BINANCE:SOLUSDT')">SOL</button>
+</div>
 <div id="tv_chart" style="height:500px"></div>
 </section>
 <script src="https://s3.tradingview.com/tv.js"></script>
 <script>
 function loadChart(symbol) {
 document.getElementById("tv_chart").innerHTML = "";
-new TradingView.widget({autosize:true,symbol:symbol,interval:"60",timezone:"Etc/UTC",theme:"dark",style:"1",locale:"en",container_id:"tv_chart"});
+new TradingView.widget({autosize:true,symbol:symbol,interval:"60",timezone:"Etc/UTC",theme:"dark",style:"1",locale:"en",allow_symbol_change:true,container_id:"tv_chart"});
 }
 loadChart("BINANCE:BTCUSDT");
 </script>
