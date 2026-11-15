@@ -121,16 +121,17 @@ const pages={
  <p>Market data connection will be added in the next development step.</p>`,
  analysis:`
  <h2>🧠 AI Analysis</h2>
- <div class="item"><b>📈 Trend Analysis</b><br>Learn higher highs, higher lows and market structure.</div>
- <div class="item"><b>📍 Support & Resistance</b><br>Understand areas where price has reacted before.</div>
- <div class="item"><b>1. EMA Crossover</b><br>Learn how EMA 20, 50 and 200 describe trend direction.</div>
- <div class="item"><b>2. RSI Divergence</b><br>Compare price movement with RSI momentum. Divergence is not a guarantee of reversal.</div>
- <div class="item"><b>3. MACD</b><br>Study momentum, signal-line crosses and histogram changes.</div>
- <div class="item"><b>4. Breakout Analysis</b><br>Learn how price moves beyond previously observed support or resistance areas.</div>
- <div class="item"><b>5. Bollinger Bands</b><br>Understand volatility and how the bands expand or contract.</div>
- <div class="item"><b>6. Ichimoku Cloud</b><br>Study trend, momentum and possible support or resistance zones.</div>
- <div class="item"><b>7. VWAP + Volume</b><br>Learn how average traded price and volume help describe market activity.</div>
- <div class="item"><b>🕯️ Candlestick Patterns</b><br>Study candle shapes and their market context.</div>
+ <div class="item" onclick="openPage('trend')">📈 <b>Trend Analysis</b><br>Tap to learn more →</div>
+ <div class="item" onclick="openPage('support')">📍 <b>Support & Resistance</b><br>Tap to learn more →</div>
+ <div class="item" onclick="openPage('ema')">📈 <b>1. EMA Crossover</b><br>Tap to learn more →</div>
+ <div class="item" onclick="openPage('rsi')">📊 <b>2. RSI Divergence</b><br>Tap to learn more →</div>
+ <div class="item" onclick="openPage('macd')">📉 <b>3. MACD</b><br>Tap to learn more →</div>
+ <div class="item" onclick="openPage('breakout')">🚀 <b>4. Breakout Analysis</b><br>Tap to learn more →</div>
+ <div class="item" onclick="openPage('bollinger')">〰️ <b>5. Bollinger Bands</b><br>Tap to learn more →</div>
+ <div class="item" onclick="openPage('ichimoku')">☁️ <b>6. Ichimoku Cloud</b><br>Tap to learn more →</div>
+ <div class="item" onclick="openPage('vwap')">📚 <b>7. VWAP + Volume</b><br>Tap to learn more →</div>
+ <div class="item" onclick="openPage('candles')">🕯️ <b>Candlestick Patterns</b><br>Tap to learn more →</div>
+ <div class="item" onclick="openPage('scalping')">📚 <b>Scalping</b><br>Tap to learn more →</div>
  <p>📚 Educational mode: indicators describe market conditions; none can guarantee future price direction.</p>`,
  timeframe:`
  <h2>⏱️ Multi-Timeframe</h2>
@@ -139,6 +140,73 @@ const pages={
  <div class="item">H1 — 1-hour chart</div>
  <div class="item">H4 — 4-hour chart</div>
  <p>Compare how market structure appears across different periods.</p>`,
+
+ ema:`
+ <h2>📈 EMA Crossover</h2>
+ <div class="item"><b>What is EMA?</b><br>EMA is a moving average that gives more weight to recent prices.</div>
+ <div class="item"><b>EMA 20</b><br>Shows shorter-term price movement.</div>
+ <div class="item"><b>EMA 50</b><br>Helps study the medium-term trend.</div>
+ <div class="item"><b>EMA 200</b><br>Helps observe the longer-term trend.</div>
+ <div class="item"><b>What to observe</b><br>Study how the three lines relate to each other and how price behaves around them.</div>
+ <p>Educational information only. Crossovers can produce false signals.</p>`,
+ rsi:`
+ <h2>📊 RSI Divergence</h2>
+ <div class="item"><b>What is RSI?</b><br>RSI is a momentum indicator, commonly displayed on a scale from 0 to 100.</div>
+ <div class="item"><b>Divergence</b><br>Compare price highs and lows with RSI highs and lows.</div>
+ <div class="item"><b>Important</b><br>Divergence can last a long time and does not guarantee a reversal.</div>`,
+ macd:`
+ <h2>📉 MACD</h2>
+ <div class="item"><b>What it measures</b><br>MACD compares two exponential moving averages to study momentum.</div>
+ <div class="item"><b>MACD line and signal line</b><br>Observe their relationship and changes over time.</div>
+ <div class="item"><b>Histogram</b><br>Shows the distance between the MACD line and signal line.</div>
+ <p>MACD is a lagging indicator and can be misleading in sideways markets.</p>`,
+ breakout:`
+ <h2>🚀 Breakout Analysis</h2>
+ <div class="item"><b>What is a breakout?</b><br>A price movement beyond a previously observed support or resistance area.</div>
+ <div class="item"><b>Volume</b><br>Study whether trading activity changes during the movement.</div>
+ <div class="item"><b>False breakouts</b><br>Price can move beyond a level and then return inside the previous range.</div>`,
+ bollinger:`
+ <h2>〰️ Bollinger Bands</h2>
+ <div class="item"><b>Three bands</b><br>The indicator has a middle moving average and upper and lower bands.</div>
+ <div class="item"><b>Volatility</b><br>Wider bands generally indicate greater volatility; narrower bands indicate lower volatility.</div>
+ <div class="item"><b>Important</b><br>Touching a band does not automatically mean price will reverse.</div>`,
+ ichimoku:`
+ <h2>☁️ Ichimoku Cloud</h2>
+ <div class="item"><b>What is it?</b><br>A multi-part indicator used to study trend and momentum.</div>
+ <div class="item"><b>The Cloud</b><br>The cloud helps visualize potential support and resistance areas.</div>
+ <div class="item"><b>Other lines</b><br>Tenkan-sen and Kijun-sen help describe shorter and longer indicator periods.</div>`,
+ vwap:`
+ <h2>📚 VWAP + Volume</h2>
+ <div class="item"><b>VWAP</b><br>Volume Weighted Average Price represents an average price weighted by trading volume.</div>
+ <div class="item"><b>Volume</b><br>Shows how much of an asset was traded during a period.</div>
+ <div class="item"><b>What to observe</b><br>Study price position relative to VWAP alongside changes in volume.</div>
+ <p>VWAP often resets by trading session and may differ across markets.</p>`,
+
+ trend:`
+ <h2>📈 Trend Analysis</h2>
+ <div class="item"><b>Uptrend</b><br>A sequence of higher highs and higher lows.</div>
+ <div class="item"><b>Downtrend</b><br>A sequence of lower highs and lower lows.</div>
+ <div class="item"><b>Sideways market</b><br>Price moves within a range without a clear direction.</div>
+ <p>Educational note: Trends can change, and chart patterns are not guarantees.</p>`,
+ support:`
+ <h2>📍 Support & Resistance</h2>
+ <div class="item"><b>Support</b><br>An area where price has previously slowed or bounced.</div>
+ <div class="item"><b>Resistance</b><br>An area where price has previously slowed or pulled back.</div>
+ <div class="item"><b>Zones, not exact lines</b><br>These areas are approximate and can be crossed.</div>
+ <p>Educational note: Previous reactions do not predict what happens next.</p>`,
+ candles:`
+ <h2>🕯️ Candlestick Patterns</h2>
+ <div class="item"><b>Candle body</b><br>Shows the distance between the open and close.</div>
+ <div class="item"><b>Wicks</b><br>Show the highest and lowest prices during the candle period.</div>
+ <div class="item"><b>Doji</b><br>A candle where the open and close are very close.</div>
+ <div class="item"><b>Engulfing pattern</b><br>A candle body that covers the previous candle body.</div>
+ <p>Educational note: A candle pattern alone does not confirm future direction.</p>`,
+ scalping:`
+ <h2>📚 Scalping — Educational Guide</h2>
+ <div class="item"><b>What is scalping?</b><br>A style of market observation focused on very short chart periods.</div>
+ <div class="item"><b>Short timeframes</b><br>Short-period charts can contain more noise and sudden fluctuations.</div>
+ <div class="item"><b>Risks to understand</b><br>Fast price changes, fees and emotional decisions can make this approach difficult.</div>
+ <p>Educational information only. This section explains the concept, not a trading recommendation.</p>`,
  settings:`
  <h2>⚙️ Settings</h2>
  <div class="item">🌙 Theme: Dark mode</div>
